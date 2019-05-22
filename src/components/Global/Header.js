@@ -4,34 +4,56 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 //Assets
-import logo from './img/logo.svg';
-import './css/Header.css';
+import './css/Header.scss';
 
 class Header extends Component {
+
+	placeHolder = "Nunca dejes de buscar";
+
+	constructor(props) {
+		super(props);
+		this.state = {
+			query: ""
+		}
+
+		this.handleQueryChange = this.handleQueryChange.bind(this);
+	}
+
 	static propTypes = {
 		title: PropTypes.string.isRequired,
 		items: PropTypes.array.isRequired
 	};
 
-	render() {
-		const { title, items } = this.props;
 
+	
+	handleQueryChange(e) {
+		if (e.target.id === 'search-bar') {
+			this.setState({
+				query: (e.target.value)
+			})
+		}
+	}
+
+	handleOnClick = () => {		
+		this.setState({redirect: true});
+	  }
+
+	render() {
 		return (
-			<div className="Header">
-				<header className="Logo">
-					<img src={logo} alt="logo" />
-					<p>
-						{title}
-					</p>
-					<ul className="Menu">
-						{items &&
-							items.map((item, key) =>
-								<li key={key}><Link to={item.url}>
-									{item.title}</Link>
-								</li>
-							)}
-					</ul>
-				</header>
+			<div>
+				<nav className="navbar navbar-light bg-yellow">
+					<i className="navbar-brand nav-logo"></i>
+					<form className="form-inline">
+						<div className="input-group">
+							<input className="form-control mr-sm-2 search-bar" type="query" id="search-bar" placeholder={this.placeHolder} aria-label="Search" value={this.state.query} onChange={this.handleQueryChange}></input>
+							<div className="input-group-append">
+								<Link to={'/items?search=' + this.state.query}>
+									<button className="btn btn nav-search-button" type="button"><i className="fas fa-search"></i></button>
+								</Link>
+							</div>
+						</div>
+					</form>
+				</nav>
 			</div>
 		);
 	}

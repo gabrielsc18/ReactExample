@@ -4,16 +4,16 @@ import {Route, Switch} from 'react-router-dom'
 
 //Components
 import App from './components/App';
-import About from './components/About';
-import Contact from './components/Contacts';
+import Details from './components/Details';
+import Results from './components/Results';
 import Home from './components/Home';
 import Page404 from './components/Page404';
 
 const AppRoutes = () => 
 <App>
-    <Switch>
-        <Route exac path="/about" component={About}/>
-        <Route exac path="/contact" component={Contact}/>
+    <Switch>     
+        <Route exact path="/items" search="?search=:query" component={Results} />
+        <Route exact path="/items/:id" component={Details}/>
         <Route exac path="/" component={Home}/>
         <Route component={Page404}/>
     </Switch>
