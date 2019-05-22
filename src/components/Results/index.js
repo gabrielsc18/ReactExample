@@ -32,8 +32,7 @@ class Results extends Component{
           </div>
         </div>
     
-        this.setState({ ItemsContainer: this.ItemsContainer });
-       
+        this.setState({ ItemsContainer: this.ItemsContainer });       
       }
 
       init(){          

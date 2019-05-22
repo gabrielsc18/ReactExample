@@ -1,6 +1,5 @@
 //Dependencies
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 //Assets
@@ -18,13 +17,6 @@ class Header extends Component {
 
 		this.handleQueryChange = this.handleQueryChange.bind(this);
 	}
-
-	static propTypes = {
-		title: PropTypes.string.isRequired,
-		items: PropTypes.array.isRequired
-	};
-
-
 	
 	handleQueryChange(e) {
 		if (e.target.id === 'search-bar') {

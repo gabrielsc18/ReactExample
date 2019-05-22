@@ -4,11 +4,7 @@ import PropTypes from 'prop-types';
 
 //Components
 import Header from './Global/Header';
-import Footer from './Global/Footer';
 import Content from './Global/Content';
-
-//Data
-import items from '../data/menu';
 
 class App extends Component {
   static propTypes = {
@@ -20,9 +16,8 @@ class App extends Component {
    
     return (
       <div className="App">
-        <Header title="CodeJobs" items={items} />
-        <Content body={children} />
-        <Footer />
+        <Header/>
+        <Content body={children} />      
       </div>
     );
   }
